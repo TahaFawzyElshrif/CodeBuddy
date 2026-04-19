@@ -55,16 +55,16 @@ if (accountBtn) {
 Token and loging in state checking
 */
 
-
+ 
 onAuthStateChanged(auth,async (user) => {
   if (user) { 
     current_user = user;
     console.log("User is logged in");
     window.current_jwt = await user.getIdToken() ;
     window.current_uid = await user.uid ;
-    window.current_uid = "u1"; // temp for testing
+    //window.current_uid = "u1"; // temp for testing
     window.current_email = await user.email ;
-    window.current_email = "cds.TahaFawzy66557@alexu.edu.eg"; // temp for testing
+    //window.current_email = "cds.TahaFawzy66557@alexu.edu.eg"; // temp for testing
     window.displayName = await user.displayName ;
     console.log("UID:", window.current_uid);
     console.log("Email:",window.current_email);
