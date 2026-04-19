@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeBuddy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body id="body_b">
+    <button class="dropout_btn" id="menu_btn"><img src="images/logo.png"></button>
+    <button class="dropout_btn" id="account_btn" ><img src="images/user.png" id="src_account"></button>
+
+
+    <div id="big_box">
+        <div id="middle_main_box">
+            <div id="intial_elements">
+               <h2> 😊 اقدر اساعدك ازاى؟ </h2>
+                <div id="suggestions">
+                    <div class="suggest" onclick="AddDefaultQuestion(this)">
+                        <i class="bi bi-map-fill"></i>
+                        عاوز رودماب لتعلم الويب تناسبنى
+                    </div>
+                    <div class="suggest" onclick="AddDefaultQuestion(this)">
+                        <i class="bi bi-laptop-fill"></i>
+                        اجيب لابتوب اى للكلية
+                    </div>
+                    <div class="suggest" onclick="AddDefaultQuestion(this)">
+                        <i class="bi bi-puzzle-fill"></i>
+                        اتعلم كام لغة برمجة ؟
+                    </div>
+                    <div class="suggest" onclick="AddDefaultQuestion(this)">
+                        <i class="bi bi-journal-text"></i>
+                        اتعلم اساسيات اى لبرمجة ؟
+                    </div>
+                </div>
+ 
+            
+            </div>
+        </div>
+
+        <div id="bottom_chat_box">
+
+            <div id="chat_box">
+                <button class="button_ch"> <i class="bi bi-paperclip"></i></button>
+                <input type="text" id="chat_input" placeholder="Type your message here...">
+                <button class="button_ch"><i class="bi bi-mic"></i></button>
+                <button class="button_ch" id="submit_button"> <i class="bi bi-send"></i></button>
+
+            </div>
+            <div id="NoteText">
+                <p>
+                    Code Buddy can make mistakes. Check important info.
+                </p>
+                <p>
+                    <a href="#">
+                        Your privacy and CodeBuddy
+                    </a>
+                </p>
+            </div>
+        </div> 
+
+    </div>
+    <script src = "scripts/VIEW_Basic_buttons.js"></script>
+    <script src="scripts/general_scripts_VIEW.js" type="module" ></script>
+    <script src="accounts/accounts_ui.js" type="module"></script>
+    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!--alert-->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script><!--cookies-->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script><!--Markdown-->
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script><!--Purify for secure markdown-->
+</body>

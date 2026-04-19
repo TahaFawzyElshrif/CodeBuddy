@@ -1,0 +1,186 @@
+#body_b {
+    background-color: #212121 !important; /* forces  color */
+}
+
+
+/*main container*/
+#big_box {
+    width: 98%;
+    height: 95vh;
+    margin: 1%;
+    background-color: #1C1C1C;
+    border-radius: 15px;
+    border: .3px solid rgb(78, 65, 65);
+    display: flex;
+    flex-direction: column ;
+}
+#middle_main_box{
+    flex: 3;
+    border-radius: 15px;
+    border: .3px solid rgb(78, 65, 65);
+    margin: .5% 1%;
+    overflow-y: auto;
+
+
+}
+#bottom_chat_box{
+    flex:.5;
+    width: 98%;
+    height: 7vh;
+    margin: 1%;
+    overflow:visible;
+}
+/* middle main box*/
+#intial_elements{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#intial_elements h2{
+    color: white;
+}
+#suggestions{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+    gap: 1vh;
+}
+.suggest{
+    width: 30vh;
+    height: 18vh;
+    background-color: #212121;
+    border-radius: 15px;
+    border: .3px solid rgb(78, 65, 65);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-evenly;
+    color: white;
+    padding: 2vh;
+    overflow-y: auto;
+    margin: 5%;
+}
+/*chat box*/
+#chat_box{
+    height: 7vh;
+    width: 100%;
+    background-color: #1C1C1C;
+    border-radius: 15px;
+    border: .3px solid rgb(78, 65, 65);
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.button_ch {
+    flex: 0 0 auto;           
+    aspect-ratio: 1 / 1;      
+    margin: 1vh;              
+    display: flex;            
+    align-items: center;      
+    justify-content: center;  /* center text/icon */
+    font-weight: bold;        
+    border-radius: 7px;     
+    background-color: #2A2A2A; 
+    color: #FFFFFF;          
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    font-size: 1.8vh;
+}
+
+.button_ch:hover {
+    transform: scale(1.1);            /* subtle zoom */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4); /* ظل أقوى عند hover */
+    background-color: #3B3B3B;        /* تغيير بسيط للون عند hover */
+}
+
+#chat_input{
+    width: 98%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 1%;
+    flex: 4;
+}
+
+#NoteText{ 
+display: flex;
+    flex-direction: row;
+  justify-content: space-between; 
+  align-items: center;   
+  padding:.2% 1% ;        
+
+}
+#NoteText p {
+    color: white;
+    font-size: 1.9vh;
+}
+
+/*menu*/
+#menu_btn{
+    top: 0;
+    left:0;
+}
+#account_btn{
+    top: 0;
+    right:0;
+}
+.dropout_btn {
+    position: fixed;
+
+    width: 50px;                  /* عرض الزر */
+    height: 50px;                 /* ارتفاع الزر */
+    padding: 0;                   /* إزالة أي padding */
+    border: none;                 /* إزالة الحدود الافتراضية */
+    border-radius: 50%;           /* يجعل الزر دائري */
+    background-color: #2A2A2A;    /* خلفية داكنة متناسقة مع الباقي */
+    display: flex;
+    align-items: center;
+    justify-content: center;      /* يوسّط الصورة داخل الزر */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* ظل خفيف */
+    margin: .5%;
+}
+
+.dropout_btn img {
+    width: 90%;                   /* حجم اللوجو داخل الزر */
+    height: 90%;
+    object-fit: contain;          /* يحافظ على نسب الصورة */
+    
+}
+
+#account_btn:hover {
+    transform: scale(1.1);          /* تكبير خفيف عند hover */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5); /* ظل أقوى */
+    background-color: #3B3B3B;     /* تغيير بسيط للون الخلفية */
+}
+
+
+/*Message*/
+.msg_row{
+    padding: 1%;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    display:flex;
+    justify-content: flex-end; 
+}
+
+.msg_box{
+    width: 50%;
+    background-color: #212121;
+    border: none;
+    color: white;
+    padding: 1%;
+
+    border-radius: 15px;
+    overflow-y: auto;
+    align-items: start;
+    align-content: start;
+}
