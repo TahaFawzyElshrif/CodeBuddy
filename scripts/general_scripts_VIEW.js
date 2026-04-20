@@ -53,15 +53,13 @@ async function send() {
 
     await getAIresponse(entered_text, middle_main_box,document,send_widget_message);
 
-    //test
-    //send_widget_message("entered_text", true, middle_main_box, false);
-
+ 
 }
 
 
 
 // Helper
-function send_widget_message(msg, chat_ai, middle_main_box, is_error,is_final_response_ai=false) {// chat_ai: true if the message is from the AI, false if it's from the user. is_error: true if the message is an error message, false otherwise.
+function send_widget_message(msg, chat_ai, middle_main_box, is_error, is_final_response_ai = false) {// chat_ai: true if the message is from the AI, false if it's from the user. is_error: true if the message is an error message, false otherwise.
     if (!is_error) {
         var dir_box = chat_ai ? "justify-content: flex-start;" : "justify-content: flex-end;";
         var ico_img = chat_ai ? '<i class="bi bi-robot"></i>' : '<i class="bi bi-person"></i>';
@@ -79,7 +77,7 @@ function send_widget_message(msg, chat_ai, middle_main_box, is_error,is_final_re
                 </div>`;
 
         if (is_final_response_ai && chat_ai) {
-            setPDFDownloadButton(middle_main_box,cleanHTML);
+            setPDFDownloadButton(middle_main_box, cleanHTML);
         }
     } else {
         var dir_box = "justify-content: center;";
@@ -94,45 +92,101 @@ function send_widget_message(msg, chat_ai, middle_main_box, is_error,is_final_re
 }
 
 
-function setPDFDownloadButton(middle_main_box,text) {
-    middle_main_box.innerHTML = middle_main_box.innerHTML + `<input type="Button" id = "PDF" value="Download PDF">`
-    document.getElementById("PDF").addEventListener("click", function (event) {
+function setPDFDownloadButton(middle_main_box, text) {
+    middle_main_box.innerHTML += `
+        <br>
+        <br>
+        <div style="position: relative;">
+            
+            <!-- your message content here -->
+
+            <button id="PDF"
+            class="btn btn-light shadow-sm rounded-circle p-1"
+            style="
+                position: absolute;
+                bottom: 6px;
+                left: 6px;
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10;
+                background-color: #523437;
+                color: white;
+                border: none;
+            ">
+            <i class="bi bi-file-earmark-pdf text-danger" style="font-size: 14px;"></i>
+            </button>
+
+        </div>
+    `;
+    const btn = document.getElementById("PDF");
+
+    btn.addEventListener("mouseenter", () => {
+    btn.style.transform = "scale(1.1)";
+    btn.style.boxShadow = "0 2px 8px rgba(0,0,0,0.15)";
+    });
+
+    btn.addEventListener("mouseleave", () => {
+    btn.style.transform = "scale(1)";
+    btn.style.boxShadow = "0 1px 4px rgba(0,0,0,0.1)";
+    });
+
+    btn.addEventListener("click", function (event) {
         downloadMarkdownAsPDF(text);
         console.log("PDF Downloaded");
 
     });
 }
 
-
 function downloadMarkdownAsPDF(markdownText, fileName = "conversation.pdf") {
-  // 1) Convert Markdown → HTML
-  const htmlContent = marked.parse(markdownText);
-
-  // 2) Create temporary container
-  const element = document.createElement("div");
-  element.innerHTML = htmlContent;
-
-  // Optional: basic styling for PDF
-  element.style.padding = "20px";
-  element.style.fontFamily = "Arial, sans-serif";
-
-  document.body.appendChild(element);
-
-  // 3) Convert HTML → PDF
-  const opt = {
-    margin: 0.5,
-    filename: fileName,
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
-  };
-
-  html2pdf()
-    .set(opt)
-    .from(element)
-    .save()
-    .then(() => {
-      // 4) Cleanup
-      document.body.removeChild(element);
+    // 1) Convert Markdown → HTML
+    marked.setOptions({
+        breaks: true
     });
+    const htmlContent = marked.parse(markdownText);
+
+    // 2) Create temporary container
+    const element = document.createElement("div");
+    element.innerHTML = htmlContent;
+
+    // preserve markdown spacing + line breaks
+    element.style.padding = "20px";
+    element.style.fontFamily = "Tahoma, Arial, sans-serif";
+    element.style.direction = "rtl";
+    element.style.textAlign = "right";
+
+    // important fix for spacing issues
+    element.style.whiteSpace = "pre-wrap";
+    element.style.lineHeight = "1.8";
+
+    // Optional: improve readability for Arabic
+    element.style.lineHeight = "1.8";
+
+    document.body.appendChild(element);
+
+    // 4) PDF options
+    const opt = {
+        margin: 0.5,
+        filename: fileName,
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: {
+            scale: 2,
+            useCORS: true
+        },
+        jsPDF: {
+            unit: "in",
+            format: "a4",
+            orientation: "portrait"
+        }
+    };
+
+    html2pdf()
+        .set(opt)
+        .from(element)
+        .save()
+        .then(() => {
+            document.body.removeChild(element);
+        });
 }
