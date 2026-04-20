@@ -59,7 +59,7 @@ async function send() {
 
 
 // Helper
-function changeButtonToLoading() {
+export function changeButtonToLoading() {
     const submitButton = document.getElementById('submit_button');
     submitButton.disabled = true;
     submitButton.innerHTML = `
@@ -68,7 +68,7 @@ function changeButtonToLoading() {
         </span>
     `;
 }
-function changeButtonToDefault() {
+export function changeButtonToDefault() {
     const submitButton = document.getElementById('submit_button');
     submitButton.disabled = false;
     submitButton.innerHTML = ' <i class="bi bi-send"></i>';
