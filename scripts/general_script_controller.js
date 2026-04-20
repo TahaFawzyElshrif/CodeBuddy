@@ -1,4 +1,5 @@
 import { SETHFToken, AI_HOST, BACKEND_HOST, DB_HOST } from "./utils.js";
+import { changeButtonToLoading,changeButtonToDefault } from "./general_scripts_VIEW.js";
 
 export async function getAIresponse(msg, middle_main_box, document, send_widget_message) {
     const url = BACKEND_HOST + "/Model/post";
@@ -13,8 +14,7 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
 
     window.memory.push(msg);
 
-    document.getElementById('submit_button').disabled = true;
-
+    changeButtonToLoading(); 
     try {
         const data = {
             prompt: msg,
@@ -44,10 +44,10 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
         window.last_state = JSON.stringify(api_data);
         console.log("State", window.last_state);
 
-        document.getElementById('submit_button').disabled = false;
+        changeButtonToDefault();
 
     } catch (error) {
-        document.getElementById('submit_button').disabled = false;
+        changeButtonToDefault();
         send_widget_message("عفوا حدث خطأ", true, middle_main_box, true);
         console.error("Error:", error);
     }
