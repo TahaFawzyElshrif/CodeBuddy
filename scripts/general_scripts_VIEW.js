@@ -61,7 +61,7 @@ async function send() {
 
 
 // Helper
-function send_widget_message(msg, chat_ai, middle_main_box, is_error) {// chat_ai: true if the message is from the AI, false if it's from the user. is_error: true if the message is an error message, false otherwise.
+function send_widget_message(msg, chat_ai, middle_main_box, is_error,is_final_response_ai=false) {// chat_ai: true if the message is from the AI, false if it's from the user. is_error: true if the message is an error message, false otherwise.
     if (!is_error) {
         var dir_box = chat_ai ? "justify-content: flex-start;" : "justify-content: flex-end;";
         var ico_img = chat_ai ? '<i class="bi bi-robot"></i>' : '<i class="bi bi-person"></i>';
@@ -78,7 +78,9 @@ function send_widget_message(msg, chat_ai, middle_main_box, is_error) {// chat_a
                     </div>
                 </div>`;
 
-        setPDFDownloadButton(middle_main_box,cleanHTML);
+        if (is_final_response_ai && chat_ai) {
+            setPDFDownloadButton(middle_main_box,cleanHTML);
+        }
     } else {
         var dir_box = "justify-content: center;";
         middle_main_box.innerHTML += `<div class="msg_row" style="${dir_box};">
