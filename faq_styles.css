@@ -1,0 +1,56 @@
+#middle_main_box h2{
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 3%;
+
+    /*Animation*/
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeInTitle 0.6s ease forwards;
+
+}
+
+.faq_item{
+    background-color: #2C2C2C;
+    color: white;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 5px;
+
+    /*Animation*/
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+
+    /* Simple Show*/
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInItem 0.5s ease forwards;
+}
+
+
+/*Additional Animation*/
+
+@keyframes fadeInTitle {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*Simple delay to make them appear one by one */
+.faq_item:nth-child(1) { animation-delay: 0.05s; }
+.faq_item:nth-child(2) { animation-delay: 0.1s; }
+.faq_item:nth-child(3) { animation-delay: 0.15s; }
+.faq_item:nth-child(4) { animation-delay: 0.2s; }
+
+@keyframes fadeInItem {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.faq_item:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    background-color: #333333;
+}
