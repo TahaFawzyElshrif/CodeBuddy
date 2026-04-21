@@ -10,6 +10,12 @@ window.last_state = "";
 
 // ON OPEN CODE
 
+if (window.current_jwt && window.current_uid) {
+    changeButtonToDefault();
+}else{
+    changeButtonToLoading(); // disable the button until we know the user state
+}
+
 /////////////////////
 // Module listeners
 ////////////////////
@@ -63,9 +69,7 @@ export function changeButtonToLoading() {
     const submitButton = document.getElementById('submit_button');
     submitButton.disabled = true;
     submitButton.innerHTML = `
-        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true">
-        
-        </span>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
     `;
 }
 export function changeButtonToDefault() {
