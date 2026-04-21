@@ -73,7 +73,7 @@ export function changeButtonToDefault() {
     submitButton.innerHTML = ' <i class="bi bi-send"></i>';
 }
 export function updateAuthUI() {
-    if (window.current_jwt && window.current_uid && window.displayName && window.current_email) {
+    if (window.current_jwt && window.current_uid ) {
         changeButtonToDefault();
     } else {
         changeButtonToLoading();
