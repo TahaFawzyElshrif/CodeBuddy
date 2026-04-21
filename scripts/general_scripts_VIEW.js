@@ -10,7 +10,7 @@ window.last_state = "";
 
 // ON OPEN CODE
 
-if (window.current_jwt && window.current_uid) {
+if (window.current_jwt && window.current_uid && window.displayName && window.current_email) {
     changeButtonToDefault();
 }else{
     changeButtonToLoading(); // disable the button until we know the user state
