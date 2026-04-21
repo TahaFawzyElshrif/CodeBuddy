@@ -5,7 +5,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase
 import { getAuth,  onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 import {BACKEND_HOST} from "../scripts/utils.js";
 import {loginWithGoogle} from "./accounts_view.js";
-
+import { updateAuthUI } from "../scripts/general_scripts_VIEW.js";
 /*
 Initialize Firebase 
 */
@@ -69,8 +69,7 @@ onAuthStateChanged(auth,async (user) => {
     console.log("UID:", window.current_uid);
     console.log("Email:",window.current_email);
     console.log("Name:",window.displayName);
-    
-
+    updateAuthUI();
     document.getElementById("src_account").src = "images/profile.png";
     document.getElementById("submit_button").disabled = false;
 

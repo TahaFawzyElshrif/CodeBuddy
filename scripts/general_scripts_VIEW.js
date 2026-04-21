@@ -9,12 +9,7 @@ window.memory = [];
 window.last_state = "";
 
 // ON OPEN CODE
-
-if (window.current_jwt && window.current_uid && window.displayName && window.current_email) {
-    changeButtonToDefault();
-}else{
-    changeButtonToLoading(); // disable the button until we know the user state
-}
+updateAuthUI(); // first at opening
 
 /////////////////////
 // Module listeners
@@ -76,6 +71,13 @@ export function changeButtonToDefault() {
     const submitButton = document.getElementById('submit_button');
     submitButton.disabled = false;
     submitButton.innerHTML = ' <i class="bi bi-send"></i>';
+}
+export function updateAuthUI() {
+    if (window.current_jwt && window.current_uid && window.displayName && window.current_email) {
+        changeButtonToDefault();
+    } else {
+        changeButtonToLoading();
+    }
 }
 function send_widget_message(msg, chat_ai, middle_main_box, is_error, is_final_response_ai = false) {// chat_ai: true if the message is from the AI, false if it's from the user. is_error: true if the message is an error message, false otherwise.
     if (!is_error) {
