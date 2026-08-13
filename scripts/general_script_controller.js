@@ -37,6 +37,7 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
         const api_response_json = await api_response.json();
         const api_data = api_response_json.answer.data;
 
+        console.log("NOW ", api_data);
         send_widget_message(api_data.answer, true, middle_main_box, false,api_data.all_ok);
         window.memory.push(api_data.answer);
         console.log("Memory ", window.memory);
