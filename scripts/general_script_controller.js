@@ -55,9 +55,9 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
                 false,
                 api_data.all_ok
             );
-        else if (api_data.answer.final_ans_report)
+        else if (api_data.answer)
             send_widget_message(
-                api_data.answer.final_ans_report,
+                api_data.answer,
                 true,
                 middle_main_box,
                 false,
