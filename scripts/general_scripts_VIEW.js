@@ -42,7 +42,7 @@ function make_chat_id() {
     return id;
 }
 
-window.chat_id = String(user_id);
+window.chat_id = String(make_chat_id());
 console.log(window.chat_id);
 // Core 
 async function send() {
