@@ -41,7 +41,7 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
             }`
         );
 }
-        const api_data = api_response_json.answer.data;
+        const api_data = api_response_json;
         if (!api_data) {
             throw new Error("Invalid backend response: answer.data is missing");
         }
