@@ -49,7 +49,7 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
         console.log("NOW ", api_data);
         if (api_data.question)
             send_widget_message(
-                api_data.question,
+                api_data.question.data,
                 true,
                 middle_main_box,
                 false,
@@ -57,13 +57,13 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
             );
         else if (api_data.answer)
             send_widget_message(
-                api_data.answer,
+                api_data.answer.data,
                 true,
                 middle_main_box,
                 false,
                 api_data.all_ok
             );
-        window.memory.push(api_data.answer);
+        window.memory.push(api_data.answer.data);
 
         window.last_state = JSON.stringify(api_data);
         console.log("State", window.last_state);
