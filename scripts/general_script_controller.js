@@ -55,16 +55,15 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
                 false,
                 api_data.all_ok
             );
-        else if (api_data.answer)
+        else if (api_data.answer.final_ans_report)
             send_widget_message(
-                api_data.answer,
+                api_data.answer.final_ans_report,
                 true,
                 middle_main_box,
                 false,
                 api_data.all_ok
             );
         window.memory.push(api_data.answer);
-        console.log("Memory ", window.memory);
 
         window.last_state = JSON.stringify(api_data);
         console.log("State", window.last_state);
