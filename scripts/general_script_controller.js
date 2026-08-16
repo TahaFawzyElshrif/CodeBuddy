@@ -40,7 +40,7 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
             throw new Error("Invalid backend response: answer.data is missing");
         }
 
-        print(api_data)
+        console.log(api_data)
         if (api_data.question)
             send_widget_message(
                 api_data.question.data,
