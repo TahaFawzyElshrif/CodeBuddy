@@ -5,8 +5,6 @@ import { getAIresponse, SET_UPDATE_HFToken } from "./general_script_controller.j
 ////////////////////
 
 // Global Variables 
-window.memory = [];
-window.last_state = "";
 
 // ON OPEN CODE
 updateAuthUI(); // first at opening
@@ -42,8 +40,7 @@ function make_chat_id() {
     return id;
 }
 
-window.chat_id = String(394437);//make_chat_id());
-console.log(window.chat_id);
+window.chat_id = String(make_chat_id());
 // Core 
 async function send() {
 

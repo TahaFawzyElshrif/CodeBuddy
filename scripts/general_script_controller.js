@@ -6,13 +6,7 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
     var user_name = window.displayName;
     var user_email = window.current_email;
 
-    console.log("Last State", window.last_state);
 
-    if (!window.memory) {
-        window.memory = [];
-    }
-
-    window.memory.push(msg);
 
     changeButtonToLoading(); 
     try {
@@ -46,7 +40,6 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
             throw new Error("Invalid backend response: answer.data is missing");
         }
 
-        console.log("NOW ", api_data);
         if (api_data.question)
             send_widget_message(
                 api_data.question.data,
@@ -63,10 +56,7 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
                 false,
                 api_data.all_ok
             );
-        window.memory.push(api_data.answer.data);
-
-        window.last_state = JSON.stringify(api_data);
-        console.log("State", window.last_state);
+        
 
         changeButtonToDefault();
 

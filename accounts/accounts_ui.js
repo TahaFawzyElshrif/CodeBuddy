@@ -66,7 +66,6 @@ onAuthStateChanged(auth,async (user) => {
     window.current_email = await user.email ;
     //window.current_email = "cds.TahaFawzy66557@alexu.edu.eg"; // temp for testing
     window.displayName = await user.displayName ;
-    console.log("UID:", window.current_uid);
     console.log("Email:",window.current_email);
     console.log("Name:",window.displayName);
     updateAuthUI();
