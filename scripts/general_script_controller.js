@@ -47,7 +47,7 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
                 true,
                 middle_main_box,
                 false,
-                api_data.all_ok
+                false
             );
         else if (api_data.answer)
             send_widget_message(
@@ -55,7 +55,7 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
                 true,
                 middle_main_box,
                 false,
-                api_data.all_ok
+                true // expecting that when AI not ask it's final so you can print
             );
         
 
