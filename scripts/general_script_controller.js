@@ -38,9 +38,9 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
         const api_data = api_response_json.answer.data;
 
         console.log("NOW ", api_data);
-        if api_data.question:
-            send_widget_message(api_data.answer, true, middle_main_box, false,api_data.all_ok);
-        elif api_data.answer:
+        if api_data.question
+            send_widget_message(api_data.question, true, middle_main_box, false,api_data.all_ok);
+        else if api_data.answer
             send_widget_message(api_data.answer, true, middle_main_box, false,api_data.all_ok);
 
         window.memory.push(api_data.answer);
