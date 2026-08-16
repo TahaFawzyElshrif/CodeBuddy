@@ -36,6 +36,13 @@ document.getElementById("menu_btn").addEventListener("click", async () => {
 /////////////////////
 // Functions 
 ////////////////////
+// Set Chat ID
+function make_chat_id() {
+    const id = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+    return id;
+}
+
+window.chat_id = make_chat_id()
 // Core 
 async function send() {
 

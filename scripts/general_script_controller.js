@@ -22,8 +22,7 @@ export async function getAIresponse(msg, middle_main_box, document, send_widget_
             user_jwt: window.current_jwt,
             user_email: user_email,
             user_name: user_name,
-            memory: window.memory,
-            last_state: window.last_state
+            chat_id: window.chat_id,
         };
 
         const api_response = await fetch(url, {
