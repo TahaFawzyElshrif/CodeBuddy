@@ -8,7 +8,7 @@ export function SETHFToken() {
   Swal.fire({
     title: 'Hugging Face Token',
     input: 'text',
-    inputLabel: '  لكى تتمكن من استخدام البرنامج يجب عليك انشاء حساب هاججنج فيس وانشاء توكين - هذا يمكننا من جعل الخدمة مجانية   ',
+    inputLabel: 'لبدء استخدام البرنامج مجانًا، أنشئ حسابًا على Hugging Face ثم أنشئ Access Token وأدخله هنا. هذا يساعدنا على تقديم الخدمة مجانًا. لمعرفة المزيد، راجع صفحة الأسئلة الشائعة (FAQs : https://tahafawzyelshrif.github.io/CodeBuddy/faq.html).',   
     inputPlaceholder: '',
     showCancelButton: true,
     confirmButtonText: 'حفظ',
@@ -78,5 +78,4 @@ async function update_db(userInput) {
 
 
 }
-
 

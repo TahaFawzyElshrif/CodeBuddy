@@ -3,9 +3,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
 import { getAuth,  onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-import {BACKEND_HOST} from "../scripts/utils.js";
+import {BACKEND_HOST,SETHFToken} from "../scripts/utils.js";
 import {loginWithGoogle} from "./accounts_view.js";
 import { updateAuthUI } from "../scripts/general_scripts_VIEW.js";
+
 /*
 Initialize Firebase 
 */
@@ -28,12 +29,41 @@ async function Account() {
   return login_creds;
 }
 
+async function loginWithHuggingFace() {
+  //window.location.href = BACKEND_HOST + "/auth/huggingface";
+  await Swal.fire({
+    title: "لاسف هذه الخاصية غير متاحة حاليا",
+    confirmButtonText: "ok",
+    confirmButtonColor: "#4285F4",
+  });
+}
+
+async function showAccountOptions() {
+  const result = await Swal.fire({
+    title: "اختار طريقة تسجيل الدخول",
+    showDenyButton: true,
+    confirmButtonText: "Google",
+    denyButtonText: "Hugging Face",
+    confirmButtonColor: "#4285F4",
+    denyButtonColor: "#2A2A2A"
+  });
+
+  if (result.isConfirmed) {
+    await Account();
+    SETHFToken();
+  } else if (result.isDenied) {
+    await loginWithHuggingFace();
+  }
+}
+
 const accountBtn = document.getElementById("account_btn");
 if (accountBtn) {
   accountBtn.addEventListener("click", () => {
     try {
       if (current_user["UID"] !== "") {
-          Account();
+          //Account();
+              showAccountOptions();
+
         
       }
       
@@ -87,7 +117,9 @@ onAuthStateChanged(auth,async (user) => {
 
     }).then((result) => {
       if (result.isConfirmed) {
-        Account();
+        //Account();
+            showAccountOptions();
+
        // SETHFToken();
       }
     });
